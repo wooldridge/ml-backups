@@ -1,4 +1,4 @@
-(: Configure full backup every 10 minutes for Documents db :)
+(: Configure full backup every 10 minutes for "Documents" database :)
 xquery version "1.0-ml";
 import module namespace admin = "http://marklogic.com/xdmp/admin"
   at "/MarkLogic/admin.xqy";
@@ -17,7 +17,7 @@ let $spec := admin:database-add-backup($config, $database, $backup)
 return
   admin:save-configuration($spec)
 
-(: Configure incremental backup every 2 minutes for Documents db :)
+(: Configure incremental backup every 2 minutes for "Documents" database :)
 xquery version "1.0-ml";
 import module namespace admin = "http://marklogic.com/xdmp/admin"
   at "/MarkLogic/admin.xqy";
@@ -35,7 +35,7 @@ let $spec := admin:database-add-backup($config, $database, $backup)
 return
   admin:save-configuration($spec)
 
-(: Get current backups for Documents database :)
+(: Get current backups for "Documents" database :)
 xquery version "1.0-ml";
 import module namespace admin = "http://marklogic.com/xdmp/admin"
   at "/MarkLogic/admin.xqy";
@@ -44,7 +44,7 @@ let $config := admin:get-configuration()
 return
   admin:database-get-backups($config, xdmp:database("Documents") )
 
-(: Get whether Documents database backups are enabled :)
+(: Get whether "Documents" database backups are enabled :)
 xquery version "1.0-ml";
 import module namespace admin = "http://marklogic.com/xdmp/admin"
   at "/MarkLogic/admin.xqy";
@@ -61,7 +61,7 @@ return
     $backup-ids
   )
 
-(: Restore forest "Documents" at specific dateTime :)
+(: Restore "Documents" forest at specific dateTime :)
 xquery version "1.0-ml";
 
 let $forest-ids := xdmp:database-forests(xdmp:database("Documents"))
@@ -69,7 +69,7 @@ let $date := dateTime(xs:date('2016-01-28'),xs:time('14:53:02'))
 return
   xdmp:database-restore($forest-ids,"/backups", $date);
 
-(: Delete current backups for Documents database :)
+(: Delete current backups for "Documents" database :)
 xquery version "1.0-ml";
 import module namespace admin = "http://marklogic.com/xdmp/admin"
   at "/MarkLogic/admin.xqy";
